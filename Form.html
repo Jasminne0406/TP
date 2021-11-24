@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subbmit your profile</title>
+    <style>
+        .main_container{
+            width: 100%;
+            height: 1540px;
+            border: 3px solid;
+            border-radius: 3px;
+            font: 1rem 'Fira Sans', cooper;
+        }
+        .box_1{
+            background-color: lightgray;
+            height: 100px;
+            padding: 30px 30px 30px 60px;
+            border-bottom: 3px solid;
+            
+        }
+        #input-box1{
+            width: 250px;
+            border: 2px solid;
+        }
+        .box_2{
+            border-bottom: 3px solid;
+            padding: 30px 30px 50px 50px;
+            
+        }
+        .box_3{
+            padding: 70px 100px 70px 70px;
+        }
+        .box_3_1{
+            width: 600px;
+            padding-top: 20px;
+        }
+        .box_3_2{
+            padding: 1px 20px 0px 70px;
+            font: 1rem 'Fira Sans', comics;
+        }
+        #select_box3{
+            
+            width: 150px;
+            border: 2px solid;
+            margin-bottom: 40px;
+        }
+        #input_text_box3{
+            width: 100%;
+            height: 100px;
+            border: 2px solid;
+        }
+        .input_box3{
+            width:145px;
+            margin: 5px;
+            border: 2px solid;
+            
+        }
+        .input_box3_1{
+            width:260px;
+            margin: 5px;
+            border: 2px solid;
+            
+        }
+        .box_4{
+            padding: 40px 100px 70px 70px;
+        }
+        .box_5{
+            padding-top: 17px ;
+            border-top:3px solid ;
+            background-color: lightgray;
+        }
+        #font{
+         font: 1rem 'Fira Sans', cooper;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="main_container">
+        <div class="box_1">
+            <h1>
+                Tell us about yourself
+            </h1>
+        </div>
+        <div class="box_2">
+            <table width="100%" cellspacing="0px" cellpadding="20px">
+               <tr>
+                   <td colspan="2">
+                       <p>
+                           Profile Information
+                       </p>
+                   </td>
+               </tr>
+               <tr>
+                   <td>
+                       Last Name <br><br>
+                       <input type="text" id="input-box1">
+                   </td>
+                   <td>
+                        First Name <br><br>
+                        <input type="text" id="input-box1">
+                   </td>
+               </tr>
+               <tr>
+                <td>
+                     Email<br><br>
+                    <input type="text" id="input-box1">
+                </td>
+                <td>
+                     Phone <br><br>
+                     <input type="text" id="input-box1">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    
+                    <form>
+                    <label style="padding-right:50px">Gender</label>
+                    <input type="radio" value="Male" name="gender">
+                    <label for="Male">Male</label>
+                    <input type="radio" value="Female" name="gender">
+                    <label for="Female">Female</label>
+                    </form>
+                </td>
+                
+            </tr>
+            </table>
+        </div>
+        <div class="box_3">
+            Current Address<br><br>
+            <div class="box_3_1">
+            <form>
+                <select id="select_box3" name="city" style="margin-right: 71px">
+                    <option value="null">Province/city</option>
+                    <option value="Phnome Penh">Phnome Penh</option>
+                    <option value="Batdombong">Batdombong</option>
+                </select>
+           
+                <select id="select_box3" name="country">
+                    <option value="null">Country</option>
+                    <option value="Phnome Penh">Phnome Penh</option>
+                    <option value="Batdombong">Batdombong</option>
+                </select>
+           
+                <select id="select_box3" name="post-code" style="margin-left:70px">
+                    <option value="null">Post Code</option>
+                    <option value="Phnome Penh">Phnome Penh</option>
+                    <option value="Batdombong">Batdombong</option>
+                </select>
+                <input type="text" id="input_text_box3" placeholder="Input your Address">
+            </form>
+            </div>
+            </div>
+            <div>
+            
+            </div>
+            <div class="box_3_2">
+                <table width="630px" height="100%">
+                    <tr id="font">
+                        <td colspan="2">
+                            Skills <br><br>
+                        </td>
+                        <td  colspan="2">
+                            Languages<br><br>
+                        </td>  
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" value="Design" >
+                            <label for="Design">Designing</label>
+                        </td>
+                        <td style="padding-left: 50px">
+                            <input type="checkbox" value="Database">
+                            <label for="Database" >Database management</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" value="English">
+                            <label for="English">English  </label>
+                        
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;
+                        </td>
+                        <td>
+                            <input type="checkbox" value="Chinese">
+                            <label for="Chinese">Chinese</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" value="Coding">
+                            <label for="Coding">Coding</label>
+                            
+                        </td>
+                        
+                        <td style="padding-left: 50px">
+                            <input type="checkbox" value="debug" >
+                            <label for="debug">Debug</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" value="French">
+                            <label for="French">French</label>
+                        </td>
+                        <td>
+                            <br><br>
+                        </td>
+                    </tr>
+                </table>
+                <div width="600px" height="100%" id="font">
+                <table>
+                    <tr>
+                        <td>
+                            <br><br>
+                            Experience 
+                        </td>
+                    </tr>
+                </table>  
+                </div>
+                <table width="600px">
+                    <tr>
+                        <td>
+                            <br>
+                            &nbsp;From
+                            <br>
+                            
+                        </td>
+                        <td>
+                            <br>
+                            &nbsp;To
+                            <br>
+                            
+                        </td>      
+                                      
+                        <td>
+                            <br>
+                            &nbsp;Description
+                            
+                            <br>
+                        </td>
+                    
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="input_box3"></td>
+                        <td><input type="text" class="input_box3"></td>
+                        <td><input type="text" class="input_box3_1"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="input_box3"></td>
+                        <td><input type="text" class="input_box3"></td>
+                        <td><input type="text" class="input_box3_1"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="input_box3"></td>
+                        <td><input type="text" class="input_box3"></td>
+                        <td><input type="text" class="input_box3_1"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="input_box3"></td>
+                        <td><input type="text" class="input_box3"></td>
+                        <td><input type="text" class="input_box3_1"></td>
+                    </tr>
+                       
+            </table>
+        </div>
+        <div class="box_4"> 
+            Choose your profile Photo
+            <br><br>
+            <input type="file" style="width:86px; box-shadow:3px 3px black; border: 2px solid"><br><br><br>
+            <button type="button" style="background-color:dodgerblue; 
+                color: whitesmoke; border-color: black ; border-style:inset ;
+                box-shadow: 2px 2px black; position: absolute ;right:70px">
+                Submit
+            </button>
+        </div>
+        <div class="box_5" >
+            
+        </div>
+        
+        
+    </div>          
+        
+    
+</body>
+</html>
