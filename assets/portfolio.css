@@ -1,0 +1,38 @@
+.p4_right_box_menuBar{
+    width:40%;
+    height:40px;
+    border: 0 solid;
+    margin-top: 50px;
+    margin-left: 480px;
+    font-family: monospace;
+    font-size: 17px;
+    position: relative;
+}
+.p4_right_box_menuBar_small_yellowBox{
+    width: 30px;
+    padding: 10px;
+    left: 2px;
+    margin-left: 10px;
+    background-color: orange;
+    color: white;
+    position: absolute;
+   
+}
+.p4_right_box_menuBar_small_box{
+    position: absolute;
+    width: 30px;
+    padding: 10px;
+    color: rgba(0, 0, 0, 0.377);
+    left: 70px;
+}
+.p4_right_box_mainMenu{
+    width: 76%;
+    height: 100%;
+    margin-top: 30px;
+    margin-left: 180px;
+}
+.p4_right_box_mainMenu_picture{
+    width:300px;
+    height: 320px;
+    border: 1px solid grey;
+}

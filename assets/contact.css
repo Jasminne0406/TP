@@ -1,0 +1,108 @@
+.p6_right_box_big_box{
+    width: 80%;
+    height: 1500px;
+    margin-top: 65px;
+    margin-left: 160px;
+    position: relative;
+}
+.p6_right_box_Get_in_touch_box{
+    width:50%;
+    height: 100%;
+    position: absolute;
+}
+.p6_right_box_Contact_form_box{
+    width: 50%;
+    height: 100%;
+    right: 0;
+    position: absolute;
+}
+.p6_right_box_Get_in_touch_box_logo_part{
+    width: 60%;
+    height:300px;
+    padding:20px;
+    color: black;
+    font-size: 17px;
+    font-family:monospace;
+    position: relative;
+}
+.p6_right_box_Get_in_touch_box_logo{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    margin-left:0;
+}
+.p6_right_box_Contact_form_box_input_box{
+    width: 70%;
+    height: 500px;
+    position: relative;
+    font-family: monospace;
+}
+.p6_right_box_Contact_form_box_input1{
+    width: 100%;
+    height: 50px;
+    font-size: 17px;
+    border-radius: 2px;
+    border: 2px solid rgba(128, 128, 128, 0.63);
+    position: absolute;
+    font-family: monospace;
+}
+.p6_right_box_Contact_form_box_input2{
+    width: 100%;
+    height: 50px;
+    font-size: 17px;
+    border-radius: 2px;
+    border: 2px solid rgba(128, 128, 128, 0.63);
+    top: 85px;
+    position: absolute;
+    font-family: monospace;
+}
+.p6_right_box_Contact_form_box_input3{
+    width: 100%;
+    height: 150px;
+    font-size: 17px;
+    border-radius: 2px;
+    border: 2px solid rgba(128, 128, 128, 0.63);
+    top: 175px;
+    position: absolute;
+    font-family: monospace;
+}
+.p6_right_box_Contact_form_box_input4{
+    width:100%;
+    height:90px;
+    border: 2px solid rgba(128, 128, 128, 0.63);
+    position: absolute;
+    top:70%;
+}
+.p6_right_box_Contact_form_box_input5{
+    position: absolute;
+    width: 40%;
+    height:60px;
+    top:95%;
+    border: 2px solid orange;
+    font-size: 16px;
+    font-family: monospace;
+}
+.p6_right_box_Contact_form_box_input_logo1{
+    width: 25px;
+    height:25px;
+    right: 10px;
+    top:12px;
+    opacity: 0.4;
+    position: absolute;
+}
+.p6_right_box_Contact_form_box_input_logo2{
+    width: 25px;
+    height:25px;
+    right: 10px;
+    top:93px;
+    opacity: 0.4;
+    position: absolute;
+}
+.p6_right_box_Contact_form_box_input_logo3{
+    width: 25px;
+    height:25px;
+    right: 10px;
+    top:180px;
+    opacity: 0.4;
+    position: absolute;
+}
