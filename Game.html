@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <style>
+    #parent{
+        display: flex;
+        justify-content: center;
+    }
+    #canvas{
+        border: 1px solid black;
+        width: 1500px;
+        height: 500px;
+    }
+    #log_in{
+        position: absolute;
+        margin-top: 0px;
+        display: flex;
+        flex-direction: column;
+        width: 1500px;
+        height: 500px;
+        border: 2px black solid;
+        background-color: aquamarine;
+    }
+    
+    #header{
+        display:block;
+        font-size: 2rem;
+        margin-top: 6rem;
+        color:black;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    #input_box{
+        width:40%;
+        height:40px;
+        border-radius: 10px;
+    }
+    #button{
+        width:15%;
+        height:30px;
+        background-color:bisque;
+        font-family: 'Courier New', Courier, monospace;
+
+    }
+    #background{
+        width: 100%;
+        height: 500px;
+        visibility: hidden;
+    }
+    #background2{
+        width: 100%;
+        height: 500px;
+        visibility: hidden;
+    }
+    
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <canvas id="canvas"> </canvas>
+            <div id="log_in">
+                <center>
+                <h3 id="header"> Player Name </h3>
+                <input id="input_box" type="text">
+                <br><br><br>
+                <button id="button" onclick="game.log_in()"><b>Start Game</b></button>
+                <img id="background" src="assets/road.png">
+                <img id="background2" src="assets/dino.png">
+                </center>
+            </div>
+    </div>
+    
+    <script>
+        class Cloud{
+            shape = null;
+            width = 35;
+            height = 20;
+            positionX = 100;
+            positionY = 40;
+            speed = 10;
+            constructor(gameContext){
+                this.gameContext = gameContext;
+                this.shape = new Image();
+                this.shape.src = "assets/cloud.jfif";
+            }
+            move = (() => {
+                    setTimeout(() => {
+                    if (this.positionX > -200) {
+                        this.gameContext.ctx.clearRect(this.positionX, this.positionY,this.width,this.height); 
+                        this.positionX = this.positionX - this.speed;
+                        this.gameContext.ctx.drawImage(
+                        this.shape, 
+                        this.positionX, this.positionY,this.width,this.height // Destination
+                        );
+                        requestAnimationFrame(this.move)
+                      }
+                    else {
+                        this.positionX = 300;
+                        this.gameContext.ctx.clearRect(this.positionX, this.positionY,this.width,this.height); 
+                        this.positionX = this.positionX - this.speed;
+                        this.gameContext.ctx.drawImage(
+                        this.shape, 
+                        this.positionX,this.positionY,this.width,this.height // Destination
+                        );
+                        requestAnimationFrame(this.move)
+                      }
+                    }, 80);
+            });
+        }
+        class Dino{
+                dino = null;
+                width = 30;
+                height = 30;
+                positionX = 20;
+                positionY = 97;
+                positionY2 = 0;
+                speed = 10;
+                frameIndex = 0;
+                i=88;
+            
+                constructor(gameContext){
+                    this.gameContext = gameContext;
+                    this.dino = new Image();
+                    this.dino.src = "assets/2x-trex.png";
+                    this.dino.onload = (() => {
+                    console.log('draw image');
+                    this.gameContext.ctx.drawImage(this.dino,0,0,this.i,100,this.positionX,this.positionY,this.width,this.height);
+                      })
+                    }
+            run = (() => {
+                    if (this.frameIndex > 6) {
+                        this.frameIndex = 0;
+                    }
+                    setTimeout(() => {
+                    if (this.positionX < 300) {
+                        this.gameContext.ctx.clearRect(this.positionX,this.positionY,this.width,this.height); 
+                        this.positionX = this.positionX + this.speed;
+                        this.gameContext.ctx.drawImage(
+                        this.dino,
+                        this.frameIndex*this.i, 0,this.i, 100,
+                        this.positionX,this.positionY,this.width,this.height // Destination
+                        );
+                        requestAnimationFrame(this.run)
+                        this.frameIndex++;
+                      }
+                    else {
+                        this.positionX = 0;
+                        this.gameContext.ctx.clearRect(this.positionX,this.positionY,this.width,this.height); 
+                        this.positionX = this.positionX + this.speed;
+                        this.gameContext.ctx.drawImage(
+                        this.dino, 
+                        this.frameIndex*this.i, 0, this.i, 100,
+                        this.positionX,this.positionY,this.width,this.height// Destination
+                        );
+                        requestAnimationFrame(this.run)
+                        this.frameIndex++;
+                      }
+                    }, 80);
+                });
+        }
+        
+        class Bird {
+            shape = null;
+            size = null;
+            width = 20;
+            height = 30;
+            positionX = 300;
+            positionY = 10;
+            speed = 10;
+            frameIndex = 0;
+            constructor(gameContext) {
+                this.gameContext = gameContext;
+                this.shape = new Image();
+                this.shape.src ="assets/bird.png";
+                this.shape.onload = (() => {
+                console.log('draw image');
+                this.gameContext.ctx.drawImage(this.shape, 0, 0, 200, 200,this.positionX,this.positionY,this.width,this.height);
+                })
+            }
+            fly = (() => {
+                    if (this.frameIndex > 9) {
+                        this.frameIndex = 0;
+                        }
+                    setTimeout(() => {
+                    if (this.positionX > -200) {
+                        this.gameContext.ctx.clearRect(this.positionX,this.positionY,this.width,this.height); 
+                        this.positionX = this.positionX - this.speed;
+                        this.gameContext.ctx.drawImage(
+                        this.shape,
+                        this.frameIndex*200, 0, 200, 200,
+                        this.positionX,this.positionY,this.width,this.height // Destination
+                        );
+                        requestAnimationFrame(this.fly)
+                        this.frameIndex++;
+                      }
+                    else {
+                        this.positionX = 300;
+                        this.gameContext.ctx.clearRect(this.positionX,this.positionY,this.width,this.height); 
+                        this.positionX = this.positionX - this.speed;
+                        this.gameContext.ctx.drawImage(
+                        this.shape, 
+                        this.frameIndex*200, 0, 200, 200,
+                        this.positionX,this.positionY,this.width,this.height// Destination
+                        );
+                        requestAnimationFrame(this.fly)
+                        this.frameIndex++;
+                      }
+                    }, 80);
+            });
+        }
+        
+        class  Game{
+            constructor(){
+                this.canvas = document.getElementById("canvas");
+                this.ctx = this.canvas.getContext("2d");
+            }
+            log_in = (() =>{
+                let name = document.getElementById("input_box");
+                if(name.value==""){
+                    alert("Please input your name before you start the game!", this.name);
+                }else{
+                    this.start();
+                }
+            });
+            start = (() =>{
+                let log_in_page = document.getElementById("log_in");
+                let background = document.getElementById("background");
+                log_in_page.style.display="none";
+                this.ctx.drawImage(background,0,0,300,255);
+                let dino = new Dino(this);
+                let bird = new Bird(this);
+                let cloud = new Cloud(this);
+                cloud.move();
+                bird.fly();
+                dino.run();
+               }   
+            )
+        }
+        let game = new Game();
+    </script>
+</body>
+</html>
