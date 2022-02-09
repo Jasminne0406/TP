@@ -12,7 +12,7 @@
     }
     #canvas{
         border: 1px solid black;
-        width: 1500px;
+        width: 1280px;
         height: 500px;
     }
     #log_in{
@@ -55,6 +55,62 @@
         height: 500px;
         visibility: hidden;
     }
+    #cactus{
+        width: 80px;
+        height: 70px;
+        position: relative;
+        top: 370px;
+        right:800px;
+         background-image: url("assets/catcus.png");
+         background-size: 80px 70px;
+         animation: block 2s infinite;
+         visibility: hidden;
+    }
+    @keyframes block{
+            0% {
+                right: -160px;
+            }
+            100% {
+                right: 1270px;
+            }
+        }
+    #dino{
+        width: 150px;
+        height: 150px; 
+        background-image: url("assets/dino.png");
+        background-size: 150px 150px; 
+        position: relative;
+        top: 290px;
+        right: 1350px;
+        visibility: hidden;
+    }
+    .jump {
+        animation: jump 0.30s linear;
+    }
+    @keyframes jump{
+        0%{
+            top: 250px;
+        }
+        30%{
+            top: 200px;
+        }
+        50%{
+            top: 125px;
+        }
+        80%{
+            top: 200px;
+        }
+        100%{
+            top: 250px;
+        }
+        0%{
+            right: 1350px;
+        }
+        100%{
+            right:1340px;
+        }
+    }
+
     
     </style>
 </head>
@@ -68,18 +124,20 @@
                 <br><br><br>
                 <button id="button" onclick="game.log_in()"><b>Start Game</b></button>
                 <img id="background" src="assets/road.png">
-                <img id="background2" src="assets/dino.png">
                 </center>
             </div>
+            <div id="cactus"></div>
+            <div id="dino"></div>
     </div>
     
     <script>
+
         class Cloud{
             shape = null;
             width = 35;
             height = 20;
             positionX = 100;
-            positionY = 40;
+            positionY = 30;
             speed = 10;
             constructor(gameContext){
                 this.gameContext = gameContext;
@@ -109,57 +167,6 @@
                       }
                     }, 80);
             });
-        }
-        class Dino{
-                dino = null;
-                width = 30;
-                height = 30;
-                positionX = 20;
-                positionY = 97;
-                positionY2 = 0;
-                speed = 10;
-                frameIndex = 0;
-                i=88;
-            
-                constructor(gameContext){
-                    this.gameContext = gameContext;
-                    this.dino = new Image();
-                    this.dino.src = "assets/2x-trex.png";
-                    this.dino.onload = (() => {
-                    console.log('draw image');
-                    this.gameContext.ctx.drawImage(this.dino,0,0,this.i,100,this.positionX,this.positionY,this.width,this.height);
-                      })
-                    }
-            run = (() => {
-                    if (this.frameIndex > 6) {
-                        this.frameIndex = 0;
-                    }
-                    setTimeout(() => {
-                    if (this.positionX < 300) {
-                        this.gameContext.ctx.clearRect(this.positionX,this.positionY,this.width,this.height); 
-                        this.positionX = this.positionX + this.speed;
-                        this.gameContext.ctx.drawImage(
-                        this.dino,
-                        this.frameIndex*this.i, 0,this.i, 100,
-                        this.positionX,this.positionY,this.width,this.height // Destination
-                        );
-                        requestAnimationFrame(this.run)
-                        this.frameIndex++;
-                      }
-                    else {
-                        this.positionX = 0;
-                        this.gameContext.ctx.clearRect(this.positionX,this.positionY,this.width,this.height); 
-                        this.positionX = this.positionX + this.speed;
-                        this.gameContext.ctx.drawImage(
-                        this.dino, 
-                        this.frameIndex*this.i, 0, this.i, 100,
-                        this.positionX,this.positionY,this.width,this.height// Destination
-                        );
-                        requestAnimationFrame(this.run)
-                        this.frameIndex++;
-                      }
-                    }, 80);
-                });
         }
         
         class Bird {
@@ -229,16 +236,26 @@
                 let log_in_page = document.getElementById("log_in");
                 let background = document.getElementById("background");
                 log_in_page.style.display="none";
-                this.ctx.drawImage(background,0,0,300,255);
-                let dino = new Dino(this);
+                this.ctx.drawImage(background,0,6,300,255);
+                document.getElementById("dino").style.visibility="visible";
+                document.getElementById("cactus").style.visibility="visible";
                 let bird = new Bird(this);
                 let cloud = new Cloud(this);
                 cloud.move();
                 bird.fly();
-                dino.run();
                }   
             )
         }
+        let dino = document.getElementById("dino");
+        function jump(){
+                    dino.classList.add("jump");
+                    setTimeout(function (){
+                        dino.classList.remove("jump");
+                    },300);
+                }
+                document.addEventListener("click", function (event){
+                    jump();
+                });
         let game = new Game();
     </script>
 </body>
