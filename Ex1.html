@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise1</title>
+</head>
+<style>
+    #text{
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 50px;
+        margin-top: 100px;
+    }
+</style>
+<body>
+    <center><p id="text"></p></center>
+    <script>
+        let promise = new Promise(function(resolve,reject){
+            setTimeout(()=>{
+                console.log('after 5 sec: stuff worked!');
+                document.getElementById("text").innerHTML="Hello World!";
+                resolve("1");
+            },  5000);
+        })
+    </script>
+</body>
+</html>

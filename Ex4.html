@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise4</title>
+    <style>
+        #text{
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 50px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <center><p id="text"></p></center>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">
+
+      const getPosts = axios.get('https://jsonplaceholder.typicode.com/posts');
+      const getComments = axios.get('https://jsonplaceholder.typicode.com/comments');
+      const getPhotos = axios.get('https://jsonplaceholder.typicode.com/photos');
+
+        Promise.all([getPosts, getComments, getPhotos]).then((result) => {
+        console.log("data is loaded", result);
+        document.getElementById("text").innerHTML="Data is loaded!";
+        }).catch(() => {
+        alert("Data no found!");   
+        })
+
+    </script>
+</body>
+</html>

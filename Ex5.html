@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User</title>
+    <style>
+
+      table {
+            position: relative;
+            left: 3vw;
+            font-family: arial, sans-serif;
+            font-size: 12px;
+            border-collapse: collapse;
+            width: 100%;
+            left:400px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        #List {
+           display: none ;
+        }
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        #loading {
+        position: absolute;
+        border: 5px solid #a19999;
+        border-radius: 50%;
+        border-top: 5px solid  black;
+        width: 50px;
+        height: 50px;
+        -webkit-animation: spin 2s linear infinite; 
+        animation: spin 2s linear infinite;
+        top: 20%;
+        right:1000px;
+      }
+      @-webkit-keyframes spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+        img {
+          width: 100px;
+        }
+        #load_error {
+            display: none;
+            text-align: center;
+        }
+    </style>
+  </head>
+  <body>
+      <div id="loading"></div>
+        <h1 style="position: relative;left: 46vw;" id="header"> User lists</h1>
+        <table id="List"></table>
+    <div id="load_error">
+      <img src="./warning sign.png">
+      <br><br> Something went wrong!! Can't load data. <br>
+      Please check your internet connection.
+    </div>
+    <script>
+        const apiUrl = "https://jsonplaceholder.typicode.com/users";
+
+  async function getDataInApi(url) {
+  const reponse = await fetch(url);
+  var data = await reponse.json();
+  console.log(data);
+    showData(data);
+}
+
+getDataInApi(apiUrl).then(function(){
+    setTimeout(hideloader,2000);
+}).then(()=> {
+    setTimeout(load_error,10000);
+})
+function hideloader() {
+  console.log("loaded successful!")
+  document.getElementById("loading").style.display = "none";
+  document.getElementById("List").style.display = "block";
+}
+function load_error() {
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("List").style.display = "none";
+    document.getElementById("header").style.display = "none";
+    document.getElementById("load_error").style.display = "block";
+}
+
+
+function showData(data) {
+  let table = `<tr>
+       <th>ID</th><th>Name</th><th>Username</th><th>Email</th><th>Adress</th><th>Phone</th><th>Website</th><th>Company</th></tr>`;
+  for (let i of data) {
+    table += `<tr>
+        <th>${i.id}</th><th>${i.name}</th><th>${i.username}</th><th>${i.email}</th><th>${i.address.street},${i.address.suite},${i.address.city}</th><th>${i.phone}</th>
+        <th>${i.website}</th><th>${i.company.name}</th></tr>`;
+  }
+  document.getElementById("List").innerHTML = table;
+}
+    </script>
+  </body>
+</html>
