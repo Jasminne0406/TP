@@ -18,8 +18,33 @@ router.get('/me',authenticationToken, (req,res) => {
         return user;
     }
    });
-  // console.log(req.email)
 });
+
+// Update Username 
+router.post('/updateUser',authenticationToken,(req,res)=>{
+    Members.findOneAndUpdate({email: req.userEmail},req.body, (err,user) => {
+      if (err){
+        console.log(err)
+      }
+      else{
+        console.log("Result : ", user); 
+        res.json({user});
+        return user;
+      }
+   });  
+});
+
+//delete Username
+router.post('/deleteUser',authenticationToken,(req,res)=>{
+  Members.findOneAndDelete({email: req.userEmail}, (err,user) => {
+    if (err){
+      console.log(err)
+    }
+    else{
+      res.json({message: "Delete Successfully"});
+    }
+ });  
+})
 // authentication login
 router.post('/login', async (req,res) => {
     const body = req.body;
@@ -105,4 +130,6 @@ function authenticationToken(req, res, next) {
   .status(200)
   .json({ message: "Successfully logged out 😏 🍀" });
  });
+
+
 module.exports = router;
